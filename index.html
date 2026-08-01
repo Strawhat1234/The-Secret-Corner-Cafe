@@ -311,6 +311,12 @@
 <button class="scrolltop-fab" id="scrollTop" aria-label="Scroll to top">↑</button>
 <div class="ambient-toggle"><input type="checkbox" id="ambientToggle"><span>Café ambience</span></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+const SUPABASE_URL='https://wfenmrqkxqaaruwydapr.supabase.co';
+const SUPABASE_KEY='sb_publishable_FGUU0yM-9VJfmoSn8L6bwA_l4bQNzu6';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+</script>
 <script>
 /* ---------------- LOADER ---------------- */
 window.addEventListener('load',()=>{
@@ -533,19 +539,43 @@ function showTesti(i){
 setInterval(()=>showTesti((testiIdx+1)%testimonials.length),5000);
 
 /* ---------------- EVENTS CALENDAR ---------------- */
-const upcoming=[
+// Fallback list — used only if Supabase can't be reached (e.g. offline),
+// so the section never looks broken to a visitor.
+const upcomingFallback=[
  {d:"14",m:"JUL",t:"Open Mic Night",time:"7:30 PM"},
  {d:"19",m:"JUL",t:"Pour-Over Workshop",time:"11:00 AM"},
  {d:"24",m:"JUL",t:"Live Acoustic Set",time:"8:00 PM"},
  {d:"31",m:"JUL",t:"Poetry Evening",time:"7:00 PM"}
 ];
 const calEl=document.getElementById('calendar');
-upcoming.forEach(u=>{
-  const r=document.createElement('div');
-  r.className='cal-row';
-  r.innerHTML=`<div class="cal-date"><b>${u.d}</b><span>${u.m}</span><span style="margin-left:14px;color:var(--cream)">${u.t}</span></div><span>${u.time}</span>`;
-  calEl.appendChild(r);
-});
+function renderCalendar(list){
+  calEl.innerHTML='';
+  if(!list.length){calEl.innerHTML='<div class="cal-row"><span style="color:var(--cream-dim);font-style:italic">No upcoming events posted yet — check back soon.</span></div>';return;}
+  list.forEach(u=>{
+    const r=document.createElement('div');
+    r.className='cal-row';
+    r.innerHTML=`<div class="cal-date"><b>${u.d}</b><span>${u.m}</span><span style="margin-left:14px;color:var(--cream)">${u.t}</span></div><span>${u.time||''}</span>`;
+    calEl.appendChild(r);
+  });
+}
+async function loadEvents(){
+  try{
+    const {data,error}=await sb.from('events').select('title,date,time,description').order('date',{ascending:true});
+    if(error||!data||!data.length) throw error||new Error('no events yet');
+    renderCalendar(data.map(ev=>{
+      const dt=new Date(ev.date+'T00:00:00');
+      return{
+        d:String(dt.getDate()).padStart(2,'0'),
+        m:dt.toLocaleString('en-US',{month:'short'}).toUpperCase(),
+        t:ev.title,
+        time:ev.time||''
+      };
+    }));
+  }catch(e){
+    renderCalendar(upcomingFallback);
+  }
+}
+loadEvents();
 
 /* ---------------- NEWSLETTER ---------------- */
 document.getElementById('newsForm').addEventListener('submit',e=>{
