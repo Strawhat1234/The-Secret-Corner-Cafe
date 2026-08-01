@@ -234,6 +234,12 @@
 <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-fab" aria-label="Chat on WhatsApp">☎</a>
 <button class="scrolltop-fab" id="scrollTop" aria-label="Scroll to top">↑</button>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+const SUPABASE_URL='https://wfenmrqkxqaaruwydapr.supabase.co';
+const SUPABASE_KEY='sb_publishable_FGUU0yM-9VJfmoSn8L6bwA_l4bQNzu6';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+</script>
 <script>
 /* ---------------- LOADER ---------------- */
 window.addEventListener('load',()=>{
@@ -487,8 +493,29 @@ document.getElementById('resForm').addEventListener('submit',function(e){
   const modal=document.getElementById('confirmModal'), card=document.getElementById('confirmCard');
   modal.classList.add('show');
   requestAnimationFrame(()=>card.classList.add('show'));
+
+  // Save the booking to Supabase so it shows up for the café owner.
+  // This runs in the background — if it fails (e.g. offline), the
+  // guest still sees their confirmation and isn't blocked.
+  const billText=entries.map(([name,v])=>`${name} x${v.qty}`).join(', ');
+  sb.from('reservations').insert({
+    name:document.getElementById('rName').value,
+    phone:document.getElementById('rPhone').value,
+    email:document.getElementById('rEmail').value,
+    guests:parseInt(document.getElementById('rGuests').value)||null,
+    res_date:document.getElementById('rDate').value||null,
+    res_time:document.getElementById('rTime').value||null,
+    seating:seat,
+    occasion:occ,
+    notes:document.getElementById('rNotes').value,
+    table_number:selectedTable||null,
+    bill_items:billText,
+    bill_total:total||0
+  }).then(({error})=>{
+    if(error) console.error('Could not save reservation to Supabase:',error);
+  });
   /*
-    To actually email the owner + customer, integrate EmailJS / Resend / Nodemailer here, e.g.:
+    To also email the owner + customer, integrate EmailJS / Resend / Nodemailer here, e.g.:
     emailjs.send('service_id','template_id', { to:'thesecretcorner2026@gmail.com', ...formFields, bill: entries, total });
   */
 });
