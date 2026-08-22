@@ -71,7 +71,7 @@
 <section class="about" id="about">
   <div class="about-grid">
     <div class="about-art reveal">
-      <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop" alt="Interior of the cafe">
+      <img src="about-paintings.jpg" alt="Hand-painted artwork on the cafe wall">
     </div>
     <div class="about-text reveal">
       <span class="eyebrow">Our Story</span>
@@ -97,16 +97,16 @@
   </div>
   <div class="feat-row">
     <div class="feat-card reveal">
-      <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=900&auto=format&fit=crop" alt="Most ordered coffee">
+      <img src="featured-mexican-burger.jpg" alt="Chef's choice">
+      <div class="feat-overlay"><span class="eyebrow">Chef's Choice</span><h3>Mexican Cheese Veg Burger</h3></div>
+    </div>
+    <div class="feat-card reveal">
+      <img src="featured-coffee.jpg" alt="Most ordered coffee">
       <div class="feat-overlay"><span class="eyebrow">Most Ordered</span><h3>Hazelnut Cold Coffee</h3></div>
     </div>
     <div class="feat-card reveal">
-      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=900&auto=format&fit=crop" alt="Chef's choice">
-      <div class="feat-overlay"><span class="eyebrow">Chef's Choice</span><h3>Loaded Nacho Fries</h3></div>
-    </div>
-    <div class="feat-card reveal">
-      <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=900&auto=format&fit=crop" alt="Seasonal pick">
-      <div class="feat-overlay"><span class="eyebrow">Seasonal Pick</span><h3>Sapphire Blue Mojito</h3></div>
+      <img src="featured-maggie.jpg" alt="Seasonal pick">
+      <div class="feat-overlay"><span class="eyebrow">Seasonal Pick</span><h3>Cheese Corn Maggie</h3></div>
     </div>
   </div>
 </section>
@@ -461,18 +461,18 @@ renderMenu();
 
 /* ---------------- GALLERY ---------------- */
 const galleryData=[
- {src:"https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=700&auto=format&fit=crop",cat:"Interior"},
- {src:"https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=700&auto=format&fit=crop",cat:"Coffee"},
- {src:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=700&auto=format&fit=crop",cat:"Coffee"},
- {src:"https://images.unsplash.com/photo-1445116572660-236099ec97a0?q=80&w=700&auto=format&fit=crop",cat:"Food"},
- {src:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=700&auto=format&fit=crop",cat:"Cafe"},
- {src:"https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=700&auto=format&fit=crop",cat:"Cafe"},
- {src:"https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=700&auto=format&fit=crop",cat:"Coffee"},
- {src:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=700&auto=format&fit=crop",cat:"Food"},
- {src:"https://images.unsplash.com/photo-1523904632426-2a034c9ac68c?q=80&w=700&auto=format&fit=crop",cat:"Interior"},
- {src:"https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=700&auto=format&fit=crop",cat:"Events"},
- {src:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=700&auto=format&fit=crop",cat:"Events"},
- {src:"https://images.unsplash.com/photo-1453614512568-c4024d13c247?q=80&w=700&auto=format&fit=crop",cat:"Cafe"}
+ {src:"gallery-06.jpg",cat:"Interior"},
+ {src:"gallery-08.jpg",cat:"Cafe"},
+ {src:"gallery-01.jpg",cat:"Food"},
+ {src:"gallery-02.jpg",cat:"Food"},
+ {src:"gallery-03.jpg",cat:"Food"},
+ {src:"gallery-04.jpg",cat:"Food"},
+ {src:"gallery-05.jpg",cat:"Food"},
+ {src:"gallery-07.jpg",cat:"Food"},
+ {src:"gallery-09.jpg",cat:"Food"},
+ {src:"gallery-10.jpg",cat:"Food"},
+ {src:"gallery-11.jpg",cat:"Coffee"},
+ {src:"gallery-12.jpg",cat:"Coffee"}
 ];
 const galCats=["All","Cafe","Food","Coffee","Events","Interior"];
 const galFilters=document.getElementById('galFilters');
@@ -504,10 +504,10 @@ document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id=
 
 /* ---------------- TESTIMONIALS ---------------- */
 const testimonials=[
- {q:"A door I almost missed, and the best coffee I've had all year. It feels like a secret the whole city should know.",n:"Shlok"},
- {q:"We came for the mojitos and stayed for three hours talking. Nobody rushed us once.",n:"Omkar & Sanika"},
- {q:"The Coffee and Fries are worth the trip alone.",n:"Sanskruti"},
- {q:"Loaded fries, quiet jazz, low light it's become our monthly ritual.",n:"Sunny & Unnati"}
+ {q:"A door I almost missed, and the best coffee I've had all year. It feels like a secret the whole city should know.",n:"Aditi R."},
+ {q:"We came for the mojitos and stayed for three hours talking. Nobody rushed us once.",n:"Rohan K."},
+ {q:"The window seat at golden hour is worth the trip alone.",n:"Meera S."},
+ {q:"Loaded fries, quiet jazz, low light — it's become our monthly ritual.",n:"Kabir & Naina"}
 ];
 const testiWrap=document.getElementById('testiWrap');
 const testiDots=document.getElementById('testiDots');
