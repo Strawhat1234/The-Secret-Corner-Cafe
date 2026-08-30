@@ -95,12 +95,6 @@
         <div class="field"><label>Date</label><input type="date" required id="rDate"></div>
         <div class="field"><label>Time</label><input type="time" required id="rTime"></div>
       </div>
-      <div class="field"><label>Seating</label>
-        <div class="seat-options" id="seatOptions">
-          <div class="seat-opt sel" data-seat="Garden Seat">Garden Seat</div>
-          <div class="seat-opt" data-seat="Private Corner">Private Corner</div>
-        </div>
-      </div>
       <div class="field"><label>Occasion</label>
         <div class="occasion-row">
           <label><input type="radio" name="occ" value="None" checked>None</label>
@@ -374,11 +368,6 @@ function autoAssignTable(){
   return parseInt(pick.dataset.id);
 }
 
-/* ---------------- SEAT OPTIONS ---------------- */
-document.querySelectorAll('.seat-opt').forEach(s=>{
-  s.onclick=()=>{document.querySelectorAll('.seat-opt').forEach(x=>x.classList.remove('sel'));s.classList.add('sel')};
-});
-
 /* ---------------- ORDER CART (Step 2) ---------------- */
 const cart={}; // key: dish name -> {price, qty}
 const orderList=document.getElementById('orderList');
@@ -448,7 +437,6 @@ renderBill();
 /* ---------------- SUBMIT / CONFIRMATION ---------------- */
 document.getElementById('resForm').addEventListener('submit',function(e){
   e.preventDefault();
-  const seat=document.querySelector('.seat-opt.sel')?.dataset.seat||'Garden Seat';
   const occ=document.querySelector('input[name="occ"]:checked').value;
   const id='SC-'+Math.floor(100000+Math.random()*899999);
 
@@ -460,7 +448,6 @@ document.getElementById('resForm').addEventListener('submit',function(e){
     Guests <b>${document.getElementById('rGuests').value}</b><br>
     Date <b>${document.getElementById('rDate').value||'—'}</b><br>
     Time <b>${document.getElementById('rTime').value||'—'}</b><br>
-    Seating <b>${seat}</b><br>
     Table <b>${selectedTable?'T'+selectedTable+' ('+seatsPerTable[selectedTable-1]+' seats)':'To be assigned'}</b><br>
     Occasion <b>${occ}</b>`;
 
@@ -495,7 +482,7 @@ document.getElementById('resForm').addEventListener('submit',function(e){
     guests:parseInt(document.getElementById('rGuests').value)||null,
     res_date:document.getElementById('rDate').value||null,
     res_time:document.getElementById('rTime').value||null,
-    seating:seat,
+    seating:'Indoor',
     occasion:occ,
     notes:document.getElementById('rNotes').value,
     table_number:selectedTable||null,
