@@ -500,6 +500,9 @@ function closeModal(){
   document.getElementById('confirmModal').classList.remove('show');
   document.getElementById('confirmCard').classList.remove('show');
 }
+document.getElementById('confirmModal').addEventListener('click',e=>{
+  if(e.target.id==='confirmModal') closeModal();
+});
 scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>
 </body>
