@@ -9,10 +9,10 @@
   --gold:#B8892E;
   --gold-bright:#E8B54A;
   --gold-soft:rgba(184,137,46,.32);
-  --brown:#8B6444;
-  --linen-dim:#D9BFA0;
+  --brown:#EAD9BC;
+  --linen-dim:#7A5B60;
   --line:rgba(52,16,25,.12);
-  --line-on-brown:rgba(255,246,228,.25);
+  --line-on-brown:rgba(52,16,25,.14);
   --shadow:0 20px 50px rgba(52,16,25,.10);
   --ease:cubic-bezier(.16,.8,.24,1);
 }
@@ -53,7 +53,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 #loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .seal{width:96px;height:96px;object-fit:contain;animation:logoPulse 2.4s ease-in-out infinite;}
 @keyframes logoPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.94);opacity:.82}}
-.loader-text{font-family:'Cormorant Garamond',serif;letter-spacing:.4em;font-size:.75rem;text-transform:uppercase;color:var(--gold-soft);opacity:.9}
+.loader-text{font-family:'Cormorant Garamond',serif;letter-spacing:.4em;font-size:.75rem;text-transform:uppercase;color:var(--gold);opacity:.85}
 
 /* ---------- CURSOR GLOW ---------- */
 #cursor-glow{
@@ -152,7 +152,7 @@ nav.scrolled{
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(184,137,46,.35)}
 .btn-outline{border:1px solid var(--gold-soft)}
 .btn-outline:hover{background:rgba(52,16,25,.04);transform:translateY(-3px)}
-.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;flex-direction:column;align-items:center;gap:10px}
 .scroll-cue::after{content:'';width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:scrollLine 2s ease-in-out infinite}
 @keyframes scrollLine{0%,100%{transform:scaleY(.6);opacity:.4}50%{transform:scaleY(1);opacity:1}}
 
@@ -231,7 +231,7 @@ section{position:relative;padding:130px 6vw}
 .feat-card:hover img{transform:scale(1.08)}
 .feat-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(52,16,25,.92));display:flex;flex-direction:column;justify-content:flex-end;padding:26px}
 .feat-overlay .eyebrow{margin-bottom:4px}
-.feat-overlay h3{font-size:1.5rem}
+.feat-overlay h3{font-size:1.5rem;color:var(--glint)}
 @media(max-width:880px){.feat-row{grid-template-columns:1fr}}
 
 /* ---------- RESERVATION ---------- */
@@ -247,7 +247,7 @@ section{position:relative;padding:130px 6vw}
   padding:12px 14px;color:var(--cream);font-family:inherit;font-size:.9rem;outline:none;transition:border-color .3s;
 }
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
-.seat-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.seat-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:16px}
 .seat-opt{border:1px solid var(--line);border-radius:10px;padding:12px 8px;text-align:center;font-size:.78rem;transition:all .3s}
 .seat-opt.sel,.seat-opt:hover{border-color:var(--gold);background:var(--gold-soft)}
 .occasion-row{display:flex;gap:10px;margin-bottom:6px}
@@ -343,36 +343,36 @@ section{position:relative;padding:130px 6vw}
 
 /* ---------- TESTIMONIALS ---------- */
 .testi-wrap{max-width:780px;margin:0 auto;position:relative;min-height:220px}
-.testimonials{background:var(--brown);color:var(--glint)}
-.testimonials .eyebrow{color:var(--gold-bright)}
-.testimonials .divider{background:var(--gold-bright)}
+.testimonials{background:var(--brown);color:var(--ink)}
+.testimonials .eyebrow{color:var(--gold)}
+.testimonials .divider{background:var(--gold)}
 .testi-slide{position:absolute;inset:0;opacity:0;transform:translateY(20px);transition:all .7s var(--ease);text-align:center;pointer-events:none}
 .testi-slide.active{opacity:1;transform:none;pointer-events:auto}
-.stars{color:var(--gold-bright);letter-spacing:4px;margin-bottom:18px;font-size:1.1rem}
-.testi-slide p.quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;line-height:1.7;margin-bottom:22px;color:var(--glint)}
-.testi-name{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-bright)}
+.stars{color:var(--gold);letter-spacing:4px;margin-bottom:18px;font-size:1.1rem}
+.testi-slide p.quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;line-height:1.7;margin-bottom:22px;color:var(--cream-dim)}
+.testi-name{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 .testi-dots{display:flex;gap:10px;justify-content:center;margin-top:40px}
 .testi-dots span{width:8px;height:8px;border-radius:50%;background:var(--line-on-brown);transition:all .3s;cursor:pointer}
-.testi-dots span.active{background:var(--gold-bright);width:22px;border-radius:4px}
+.testi-dots span.active{background:var(--gold);width:22px;border-radius:4px}
 
 /* ---------- EVENTS ---------- */
-.events{background:var(--brown);color:var(--glint)}
-.events .eyebrow{color:var(--gold-bright)}
+.events{background:var(--brown);color:var(--ink)}
+.events .eyebrow{color:var(--gold)}
 .events .section-head p{color:var(--linen-dim)}
-.events .divider{background:var(--gold-bright)}
+.events .divider{background:var(--gold)}
 .events-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1200px;margin:0 auto 60px}
 .event-card{border:1px solid var(--line-on-brown);border-radius:14px;padding:30px;transition:all .4s var(--ease);position:relative}
-.event-card:hover{transform:translateY(-8px);border-color:var(--gold-bright)}
-.event-icon{width:42px;height:42px;margin-bottom:16px;color:var(--gold-bright)}
-.event-card h4{font-size:1.25rem;margin-bottom:8px;color:var(--glint)}
+.event-card:hover{transform:translateY(-8px);border-color:var(--gold)}
+.event-icon{width:42px;height:42px;margin-bottom:16px;color:var(--gold)}
+.event-card h4{font-size:1.25rem;margin-bottom:8px;color:var(--ink)}
 .event-card p{font-size:.85rem;color:var(--linen-dim);line-height:1.6}
 @media(max-width:880px){.events-grid{grid-template-columns:1fr}}
 .calendar{max-width:760px;margin:0 auto;border:1px solid var(--line-on-brown);border-radius:14px;overflow:hidden}
 .cal-row{display:flex;justify-content:space-between;align-items:center;padding:18px 26px;border-bottom:1px solid var(--line-on-brown);transition:background .3s}
 .cal-row:last-child{border-bottom:none}
-.cal-row:hover{background:rgba(255,246,228,.06)}
+.cal-row:hover{background:rgba(52,16,25,.03)}
 .cal-date{display:flex;align-items:center;gap:16px}
-.cal-date b{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold-bright);width:44px}
+.cal-date b{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--gold);width:44px}
 .cal-date span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--linen-dim)}
 
 /* ---------- LOYALTY ---------- */
@@ -405,15 +405,15 @@ section{position:relative;padding:130px 6vw}
 @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
 
 /* ---------- FOOTER ---------- */
-footer{background:var(--brown);color:var(--glint);border-top:1px solid var(--line-on-brown);padding:70px 6vw 30px}
+footer{background:var(--brown);color:var(--ink);border-top:1px solid var(--line-on-brown);padding:70px 6vw 30px}
 .foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.2fr);gap:40px;max-width:1300px;margin:0 auto 50px}
-.foot-grid h5{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:18px}
+.foot-grid h5{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
 .foot-grid ul{list-style:none}
 .foot-grid li{margin-bottom:10px;font-size:.88rem;color:var(--linen-dim)}
-.foot-grid li a:hover{color:var(--gold-bright)}
+.foot-grid li a:hover{color:var(--gold)}
 .foot-bottom{max-width:1300px;margin:0 auto;padding-top:26px;border-top:1px solid var(--line-on-brown);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.75rem;color:var(--linen-dim)}
-footer .search-box{background:rgba(255,246,228,.08);border:1px solid var(--line-on-brown)}
-footer .search-box input{color:var(--glint)}
+footer .search-box{background:rgba(52,16,25,.04);border:1px solid var(--line-on-brown)}
+footer .search-box input{color:var(--ink)}
 footer .search-box input::placeholder{color:var(--linen-dim)}
 
 /* ---------- FLOATING UI ---------- */
